@@ -64,7 +64,7 @@
 	<input type="text" class="waypoints"><br>
 	<input type="text" class="waypoints"><br>
 	<input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints" id="address" placeholder="Autocomplete"><br>
+	<input type="text" class="waypoints"><br>
     <b>End:</b>
     <input type="text" id="end">
 	<br>
@@ -82,9 +82,17 @@
         });
               		
 		///Autocomplete Code////
-		var input = document.getElementById('address');
-		var autocomplete = new google.maps.places.Autocomplete(input, {types: ['geocode']});
-  		autocomplete.bindTo('bounds', map);
+		var input1 = document.getElementById('start');
+		var input2 = document.getElementsByClassName("waypoints");
+		var input3 = document.getElementById('end');
+		var autocomplete1 = new google.maps.places.Autocomplete(input1);
+  		autocomplete1.bindTo('bounds', map);
+  		for (var i = 0; i < 6; i++) {
+			var autocomplete2 = new google.maps.places.Autocomplete(input2[i]);
+		}
+  		autocomplete2.bindTo('bounds', map);
+  		var autocomplete3 = new google.maps.places.Autocomplete(input3);
+  		autocomplete3.bindTo('bounds', map);
         ////////////////////////
 
         directionsDisplay.setMap(map);
