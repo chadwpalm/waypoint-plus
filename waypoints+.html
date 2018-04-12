@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Waypoints in directions</title>
+    <title>Waypoint+ Test Page</title>
     <style>
       #right-panel {
         font-family: 'Roboto','sans-serif';
@@ -64,6 +64,7 @@
 	<input type="text" class="waypoints"><br>
 	<input type="text" class="waypoints"><br>
 	<input type="text" class="waypoints"><br>
+	<input type="text" class="waypoints" id="address" placeholder="Autocomplete"><br>
     <b>End:</b>
     <input type="text" id="end">
 	<br>
@@ -79,6 +80,13 @@
           zoom: 13,
           center: {lat: 37.3352, lng: -121.8811}
         });
+              		
+		///Autocomplete Code////
+		var input = document.getElementById('address');
+		var autocomplete = new google.maps.places.Autocomplete(input, {types: ['geocode']});
+  		autocomplete.bindTo('bounds', map);
+        ////////////////////////
+
         directionsDisplay.setMap(map);
 
         document.getElementById('submit').addEventListener('click', function() {
@@ -127,7 +135,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW-Gy3YtzwfsT2pstjlMU2Q5U4TjRJZp8&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW-Gy3YtzwfsT2pstjlMU2Q5U4TjRJZp8&callback=initMap&libraries=places">
     </script>
   </body>
 </html>
