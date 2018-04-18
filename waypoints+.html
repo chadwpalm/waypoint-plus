@@ -60,12 +60,11 @@
     <input type="text" id="start">
     <br>
     <b>Waypoints:</b> <br>
-    <input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints"><br>
-	<input type="text" class="waypoints"><br>
+    	<input type="button" id="more_fields" onclick="add_fields();" value="add waypoints" />
+		<div id="add_waypoints">
+			<div class="label"></div>
+				
+		</div>
     <b>End:</b>
     <input type="text" id="end">
 	<br>
@@ -102,6 +101,15 @@
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
       }
+		// Button for add waypoints //////////
+	    function add_fields(){
+		var objTo = document.getElementById('add_waypoints')
+		var divtest =document.createElement("div");
+		divtest.innerHTML = '<div class="label">' + '<input type="text" class="waypoints"></div>'
+		
+		objTo.appendChild(divtest)
+	  }
+	  /////////////////////////////////////
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var waypts = [];
