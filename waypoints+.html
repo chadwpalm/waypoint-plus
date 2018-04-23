@@ -52,9 +52,13 @@
     </style>
   </head>
   <body>
-    <font size="7"><b>Waypoint+</font>
+	<div>
+	<span class='js-fade is-hidden'>
+	<span class="js-btn btn"><span class="js-btn btn"><img src=".\logo.png" alt="" height="1000" width="1000" align="middle"></span>
+	</span></div>
     <div id="map"></div>
     <div id="right-panel">
+	<img src="./logo.png" height="200" width="500">
     <div>
     <b>Start:</b>
     <input type="text" id="start">
@@ -159,6 +163,47 @@
           }
         });
       }
+	  // Open image animation.//////////////////////////
+	  	function fadeOut(el){
+		el.style.opacity = 1;
+		(function fade() {
+			if ((el.style.opacity -= .1) < 0) {
+		el.style.display = 'none';
+		el.classList.add('is-hidden');
+			} else {
+			requestAnimationFrame(fade);
+		}
+		})();
+	}
+		// fade in
+	function fadeIn(el, display){
+		if (el.classList.contains('is-hidden')){
+		el.classList.remove('is-hidden');
+		}
+		el.style.opacity = 0;
+		el.style.display = display || "block";
+
+		(function fade() {
+			var val = parseFloat(el.style.opacity);
+			if (!((val += .1) > 1)) {
+			el.style.opacity = val;
+			requestAnimationFrame(fade);
+		}
+		})();
+	}
+	var btn = document.querySelector('.js-btn');
+	var el = document.querySelector('.js-fade');
+	btn.addEventListener('click', function(e){
+	if(el.classList.contains('is-hidden')){
+		fadeIn(el);
+		}
+		else {
+    fadeOut(el);
+		}
+		});
+	//////////////////////////////
+	  
+	  
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW-Gy3YtzwfsT2pstjlMU2Q5U4TjRJZp8&callback=initMap&libraries=places">
